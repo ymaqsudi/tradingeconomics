@@ -1,6 +1,6 @@
 export const fetchEconomicData = async (indicator: string, country: string) => {
   if (!country) {
-    console.error("❌ Error: Country parameter is missing!");
+    console.error("Error: Country parameter is missing!");
     return [];
   }
 
@@ -8,23 +8,21 @@ export const fetchEconomicData = async (indicator: string, country: string) => {
     const apiUrl = `/api/economic-data?indicator=${indicator}&country=${encodeURIComponent(
       country
     )}`;
-    console.log("📡 Fetching from Next.js API:", apiUrl);
+    console.log("Fetching from Next.js API:", apiUrl);
 
     const response = await fetch(apiUrl);
 
     if (!response.ok) {
-      console.error(
-        `❌ API Error: ${response.status} - ${response.statusText}`
-      );
+      console.error(`API Error: ${response.status} - ${response.statusText}`);
       throw new Error(`Failed to fetch data: ${response.statusText}`);
     }
 
     const rawData = await response.json();
 
-    console.log("✅ Raw API Response:", rawData);
+    console.log("Raw API Response:", rawData);
 
     if (!Array.isArray(rawData)) {
-      console.error("❌ Unexpected API Response Format:", rawData);
+      console.error("Unexpected API Response Format:", rawData);
       return [];
     }
 
@@ -39,7 +37,7 @@ export const fetchEconomicData = async (indicator: string, country: string) => {
 
     return formattedData;
   } catch (error) {
-    console.error(`❌ Error fetching ${indicator} for ${country}:`, error);
+    console.error(`Error fetching ${indicator} for ${country}:`, error);
     return [];
   }
 };

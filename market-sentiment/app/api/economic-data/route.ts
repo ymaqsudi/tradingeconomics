@@ -26,7 +26,7 @@ export async function GET(req: Request) {
 
     if (response.status === 409) {
       console.warn(
-        `⚠️ API Conflict: Too many requests for ${country}. Retrying...`
+        `API Conflict: Too many requests for ${country}. Retrying...`
       );
       await new Promise((resolve) => setTimeout(resolve, 2000));
       return GET(req); // Retry the request

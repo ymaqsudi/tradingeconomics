@@ -35,10 +35,7 @@ const MarketSentiment = ({ country }: SentimentProps) => {
           return acc;
         }, {} as Record<string, number | null>);
 
-        console.log(
-          `📊 Processed Sentiment Data for ${country}:`,
-          structuredData
-        );
+        console.log(`Processed Sentiment Data for ${country}:`, structuredData);
 
         const {
           "GDP Growth Rate": gdp,
@@ -72,7 +69,7 @@ const MarketSentiment = ({ country }: SentimentProps) => {
         // 🔹 **Clamp between 0-100**
         setScore(Math.max(0, Math.min(100, sentimentScore)));
       } catch (error) {
-        console.error("❌ Error fetching sentiment data:", error);
+        console.error("Error fetching sentiment data:", error);
         setScore(null);
       }
     };

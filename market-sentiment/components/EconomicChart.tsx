@@ -60,7 +60,7 @@ const EconomicChart = ({ country }: EconomicChartProps) => {
         country
       );
 
-      console.log(`✅ API Response Data for ${selectedIndicator}:`, data);
+      console.log(`API Response Data for ${selectedIndicator}:`, data);
 
       if (!Array.isArray(data) || data.length === 0) {
         console.warn(`️No ${selectedIndicator} data found for ${country}`);
